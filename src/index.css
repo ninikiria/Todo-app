@@ -203,14 +203,15 @@ table {
 
 .quantity_task {
   display: flex;
-  justify-content:space-around;
-  font-size:18px;
+  justify-content: space-around;
+  font-size: 18px;
   color: #c7b9b9;
   line-height: 1.5em;
   border: 1px solid rgb(161, 207, 214);
   border-style: outset;
   border-radius: 1rem;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",  "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   -webkit-border-radius: 1rem;
   -moz-border-radius: 1rem;
   -ms-border-radius: 1rem;

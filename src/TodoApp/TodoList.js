@@ -27,34 +27,32 @@ const TodoList = () => {
   function onAddNewTask(e) {
     e.preventDefault();
     const newTaskAdd = [
-   ...todos,
+      ...todos,
       {
         id: Date.now(),
         title: taskValue,
         completed: false,
-      }, 
-      
+      },
     ];
     setTodos(newTaskAdd);
     setTaskValue("");
   }
 
   // delete function
-function onItemDelete(idItem) {
-setTodos(todos.filter(item => item.id !== idItem));
-// eslint-disable-next-line no-undef
-setTodos(newTaskAdd);
-}
+  function onItemDelete(idItem) {
+    setTodos(todos.filter((item) => item.id !== idItem));
+    // eslint-disable-next-line no-undef
+    setTodos(newTaskAdd);
+  }
 
-const totalTask = todos.length;
-const completedTask = todos.filter(item => item.completed).length
-const UnfinishedTask = todos.filter(item => !item.completed).length
+  const totalTask = todos.length;
+  const completedTask = todos.filter((item) => item.completed).length;
+  const UnfinishedTask = todos.filter((item) => !item.completed).length;
   return (
     <>
       {/* Task container section */}
       <div className="task_container">
         <form action="" onSubmit={onAddNewTask}>
-         
           <input
             className="task_input"
             type="text"
@@ -65,18 +63,16 @@ const UnfinishedTask = todos.filter(item => !item.completed).length
             ref={taskInputRef}
           />
         </form>
-
-    
       </div>
 
       {/* New added task section container */}
-      <div className="container"> 
-      <div className="quantity_task">
+      <div className="container">
+        <div className="quantity_task">
           <h3>Total: {totalTask} </h3>
-         <h3>Complete: {completedTask} </h3>
-         <h3>Unfinished: {UnfinishedTask}</h3>
-      </div>
-       
+          <h3>Complete: {completedTask} </h3>
+          <h3>Unfinished: {UnfinishedTask}</h3>
+        </div>
+
         <ul>
           {todos.map((item) => (
             <div className="box">
