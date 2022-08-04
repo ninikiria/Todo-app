@@ -101,7 +101,6 @@ video {
   vertical-align: baseline;
 }
 
-
 article,
 aside,
 details,
@@ -145,16 +144,21 @@ table {
 
 * {
   margin: 0;
+  padding: 0;
 }
 
 /* Task container section*/
-
+.bg_container {
+  /* background-color: rgba(8, 8, 8, 0.381); */
+  background-color: dimgray;
+  min-height: 713px;
+}
 .task_container {
   width: 800px;
   height: 120px;
   margin: 0 auto;
-  margin-top: 30px;
   border-radius: 5px 120px / 100px;
+  margin-top: 40px;
   border: 3px solid rgb(24, 255, 143);
   background-color: rgb(39, 39, 39);
   -webkit-border-radius: 5px 120px / 100px;
@@ -164,6 +168,7 @@ table {
 }
 
 .task_input {
+  margin-top: 20px;
   margin: 40px 10px;
   width: 350px;
   height: 40px;
@@ -196,6 +201,22 @@ table {
   -o-border-radius: 20px;
 }
 
+.quantity_task {
+  display: flex;
+  justify-content:space-around;
+  font-size:18px;
+  color: #c7b9b9;
+  line-height: 1.5em;
+  border: 1px solid rgb(161, 207, 214);
+  border-style: outset;
+  border-radius: 1rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",  "Lucida Sans", Arial, sans-serif;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
+
 .list_content {
   width: 450px;
   height: 40px;
@@ -226,7 +247,46 @@ table {
 .btn_delete {
   width: 150px;
   height: 40px;
-  margin: 13px 25px;
-  margin-left: 30px;
+  margin: 13px 15px;
   border-radius: 1rem;
+  align-items: center;
+  background-color: initial;
+  background-image: linear-gradient(#464d55, #25292e);
+  border-radius: 8px;
+  border-width: 0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  font-size: 18px;
+  justify-content: center;
+  line-height: 1;
+  outline: none;
+  overflow: hidden;
+  padding: 0 32px;
+  text-align: center;
+  text-decoration: none;
+  transform: translate3d(0, 0, 0);
+  transition: all 150ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.btn_delete:hover {
+  box-shadow: rgba(0, 1, 0, 0.2) 0 2px 8px;
+  width: 160px;
+  height: 45px;
+  opacity: 0.85;
+}
+
+.btn_delete:active {
+  outline: 0;
+}
+
+.btn_delete:focus {
+  box-shadow: rgba(0, 0, 0, 0.5) 0 0 0 3px;
 }

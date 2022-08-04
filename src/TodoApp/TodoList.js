@@ -1,27 +1,21 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../index.css";
 
-const ItemsListTodo = [
-  {
-    id: "18372920",
-    title: "Add New Task 👇🏼",
-    completed: false,
-  },
-];
+const ItemsListTodo = [];
 
 const TodoList = () => {
   const [todos, setTodos] = useState(ItemsListTodo);
   const [taskValue, setTaskValue] = useState("");
-  const taskInputRef = useRef()
+  const taskInputRef = useRef();
 
   useEffect(() => {
     taskInputRef.current.focus();
-  }, [])
+  }, []);
 
-
-  function onItemChange(itemClicked) {
+  // click mark input
+  function onItemChange(itemIdClicked) {
     const newListItem = todos.map((item) => {
-      if (item.id === itemClicked.id) {
+      if (item.id === itemIdClicked.id) {
         item.completed = !item.completed;
       }
       return item;
@@ -29,25 +23,38 @@ const TodoList = () => {
     setTodos(newListItem);
   }
 
+  // new task function
   function onAddNewTask(e) {
     e.preventDefault();
-    const newTask = [
-      ...todos,
+    const newTaskAdd = [
+   ...todos,
       {
         id: Date.now(),
         title: taskValue,
         completed: false,
-      },
+      }, 
+      
     ];
-    setTodos(newTask);
-    setTaskValue('')
+    setTodos(newTaskAdd);
+    setTaskValue("");
   }
 
+  // delete function
+function onItemDelete(idItem) {
+setTodos(todos.filter(item => item.id !== idItem));
+// eslint-disable-next-line no-undef
+setTodos(newTaskAdd);
+}
+
+const totalTask = todos.length;
+const completedTask = todos.filter(item => item.completed).length
+const UnfinishedTask = todos.filter(item => !item.completed).length
   return (
     <>
-    {/* Task container section */}
+      {/* Task container section */}
       <div className="task_container">
         <form action="" onSubmit={onAddNewTask}>
+         
           <input
             className="task_input"
             type="text"
@@ -58,9 +65,18 @@ const TodoList = () => {
             ref={taskInputRef}
           />
         </form>
+
+    
       </div>
+
       {/* New added task section container */}
-      <div className="container">
+      <div className="container"> 
+      <div className="quantity_task">
+          <h3>Total: {totalTask} </h3>
+         <h3>Complete: {completedTask} </h3>
+         <h3>Unfinished: {UnfinishedTask}</h3>
+      </div>
+       
         <ul>
           {todos.map((item) => (
             <div className="box">
@@ -75,7 +91,12 @@ const TodoList = () => {
                 <div className="list_content ">{item.title}</div>
               </li>
 
-              <button className="btn_delete">Delete</button>
+              <button
+                className="btn_delete"
+                onClick={() => onItemDelete(item.id)}
+              >
+                Delete
+              </button>
             </div>
           ))}
         </ul>
